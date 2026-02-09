@@ -11,8 +11,19 @@
       padding-top: 50px;
     }
 
-    img {
+    /* Heart image container */
+    .heart-img {
       width: 250px;
+      height: 225px;
+      margin: auto;
+      overflow: hidden;
+      clip-path: path("M125 210 C20 120 -30 40 60 40 C100 40 125 70 125 70 C125 70 150 40 190 40 C280 40 230 120 125 210 Z");
+    }
+
+    .heart-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     h1 {
@@ -46,8 +57,10 @@
 </head>
 <body>
 
-  <!-- Kitty with heart -->
-  <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Cute kitty">
+  <!-- Heart-shaped kitty animation -->
+  <div class="heart-img">
+    <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Cute kitty">
+  </div>
 
   <h1>Baby, will you be my Valentine? 💘</h1>
 
