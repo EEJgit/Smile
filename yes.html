@@ -1,62 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Yaaay 💖</title>
-  <style>
-    body {
-      font-family: "Comic Sans MS", cursive;
-      background: #fff0f5;
-      text-align: center;
-      padding-top: 50px;
-    }
+<meta charset="UTF-8">
+<title>Yaaay 💖</title>
 
-    img {
-      width: 250px;
-    }
+<style>
+body {
+  font-family: "Comic Sans MS", cursive;
+  background: #fff0f5;
+  text-align: center;
+  padding-top: 50px;
+  overflow-x: hidden;
+}
 
-    h1 {
-      color: #ff4d88;
-    }
+.falling-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
 
-    .gif {
-      margin-top: 30px;
-      width: 300px;
-    }
+.fall {
+  position: absolute;
+  top: -50px;
+  animation: fall linear infinite;
+}
 
-    /* Image gallery */
-    .gallery {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+/* smoother floating fall */
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50vh) translateX(20px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(110vh) translateX(-20px) rotate(360deg);
+    opacity: 0.9;
+  }
+}
 
-    .gallery img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 15px;
-    }
-  </style>
+img {
+  width: 250px;
+}
+
+h1 {
+  color: #ff4d88;
+}
+
+.gallery {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 150px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Same kitty -->
-  <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Cute kitty">
+<div class="falling-container" id="falling"></div>
 
-  <h1>Shirley will you be my Valentine Shirley? 💕</h1>
-  <h2>YAAAY!!! 🎉😍</h2>
+<img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Cute kitty">
 
-  <!-- 4 JPEG images -->
-  <div class="gallery">
-    <img src="image1.jpeg" alt="Memory 1">
-    <img src="image2.jpeg" alt="Memory 2">
-    <img src="image3.jpeg" alt="Memory 3">
-    <img src="image4.jpeg" alt="Memory 4">
-  </div>
+<h1>Shirley will you be my Valentine Shirley? 💕</h1>
+<h2>YAAAY!!! 🎉😍</h2>
 
-  
+<div class="gallery">
+  <img src="image1.jpeg" alt="Memory 1">
+  <img src="image2.jpeg" alt="Memory 2">
+  <img src="image3.jpeg" alt="Memory 3">
+  <img src="image4.jpeg" alt="Memory 4">
+</div>
+
+<script>
+const container = document.getElementById("falling");
+
+/* Added hearts ❤️ */
+const symbols = ["🦋", "🎀", "❤️"];
+
+function createFall() {
+  const item = document.createElement("div");
+  item.classList.add("fall");
+  item.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+
+  item.style.left = Math.random() * 100 + "vw";
+  item.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  item.style.fontSize = (Math.random() * 20 + 20) + "px";
+
+  container.appendChild(item);
+
+  setTimeout(() => {
+    item.remove();
+  }, 6000);
+}
+
+setInterval(createFall, 250);
+</script>
+
 </body>
 </html>
