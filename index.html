@@ -1,75 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Be My Valentines💖</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I'm Sorry</title>
   <style>
-    body {
-      font-family: "Comic Sans MS", cursive;
-      background: #ffe6f0;
-      text-align: center;
-      padding-top: 50px;
+    :root {
+      --paper: #fffaf7;
+      --ink: #382d31;
+      --muted: #78676d;
+      --rose: #b85d70;
+      --rose-dark: #934457;
+      --blush: #f7e4e4;
+      --line: #eedcdd;
     }
 
-    img {
-      width: 250px;
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at top left, #f7e7e5 0, transparent 45%),
+        linear-gradient(135deg, #f8efeb, #f4e6e8);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .site {
+      width: min(100%, 720px);
+      min-height: 570px;
+      padding: clamp(28px, 7vw, 62px);
+      background: var(--paper);
+      border: 1px solid rgba(184, 93, 112, 0.16);
+      border-radius: 24px;
+      box-shadow: 0 24px 70px rgba(78, 42, 51, 0.13);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .site::before {
+      content: "♡";
+      position: absolute;
+      right: 28px;
+      top: 12px;
+      color: #f1d8dc;
+      font-size: 110px;
+      line-height: 1;
+      transform: rotate(12deg);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      color: var(--rose);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font: 700 0.72rem/1.4 Arial, sans-serif;
     }
 
     h1 {
-      color: #ff4d88;
+      max-width: 540px;
+      margin: 18px 0;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      line-height: 1.02;
+      font-weight: 500;
     }
 
-    .buttons {
+    .intro {
+      max-width: 540px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.8;
+    }
+
+    .note {
+      margin: 28px 0;
+      padding: 18px 20px;
+      border-left: 3px solid var(--rose);
+      background: #fff3f1;
+      color: #604c52;
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
       margin-top: 30px;
-      position: relative;
-      height: 150px;
     }
 
     button {
-      padding: 15px 30px;
-      font-size: 18px;
-      border: none;
-      border-radius: 25px;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 20px;
       cursor: pointer;
+      font: 700 0.95rem Arial, sans-serif;
+      transition: transform 160ms ease, background 160ms ease;
     }
 
-    #yes {
-      background-color: #ff4d88;
+    button:hover { transform: translateY(-2px); }
+
+    .primary {
       color: white;
+      background: var(--rose);
     }
 
-    #no {
-      background-color: #ccc;
-      position: absolute;
+    .primary:hover { background: var(--rose-dark); }
+
+    .secondary {
+      color: var(--rose-dark);
+      background: var(--blush);
+    }
+
+    .page { display: none; animation: fadeIn 300ms ease; }
+    .page.active { display: block; }
+
+    .apology-list {
+      display: grid;
+      gap: 14px;
+      margin: 26px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .apology-list li {
+      padding: 17px 19px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fffdfb;
+      line-height: 1.65;
+    }
+
+    .apology-list strong { color: var(--rose-dark); }
+
+    .signature {
+      margin-top: 28px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .footer {
+      margin-top: 34px;
+      color: #9a858b;
+      font: 0.8rem Arial, sans-serif;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 <body>
+  <main class="site">
+    <section class="page active" id="page-one" aria-labelledby="title-one">
+      <div class="eyebrow">A message from me to you</div>
+      <h1 id="title-one">Hey Tommie, I’m truly sorry and Words Can't express how sorry i am so i'll try explain with a site.</h1>
 
-  <!-- Kitty with heart -->
-  <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Cute kitty">
+      <p class="intro">
+        I made you feel hurt, unsure, and like I was ending our relationship.
+        You deserved honesty and care from me, and I didn’t give you that.
+      </p>
 
-  <h1>Shirley will you be my Valentine? 💘</h1>
+      <div class="note">
+        I’m not making this page to pressure you into replying or changing your
+        mind. I just want to take responsibility and say what I should have said
+        clearly from the beginning.
+      </div>
 
-  <div class="buttons">
-    <button id="yes" onclick="goYes()">Yes 💖</button>
-    <button id="no">No 😢</button>
-  </div>
+      <div class="actions">
+        <button class="primary" onclick="showPage(2)">
+          Read my apology
+        </button>
+      </div>
+
+      <div class="footer">Take your time. You don’t owe me a response.</div>
+    </section>
+
+    <section class="page" id="page-two" aria-labelledby="title-two">
+      <div class="eyebrow">What I should have said</div>
+      <h1 id="title-two">I’m sorry for how I treated you.</h1>
+
+      <ul class="apology-list">
+        <li>
+          <strong>I’m sorry</strong> that you found pictures of my ex, including
+          intimate pictures. I understand why seeing them hurt you and damaged
+          your trust.
+        </li>
+        <li>
+          <strong>I’m sorry</strong> that I reacted by making it seem like you
+          were wrong for looking through my phone, instead of listening to how
+          what you found affected you and being honest with you.
+        </li>
+        <li>
+          <strong>I’m sorry</strong> for sending a message that made it seem
+          like I was breaking up with you. That was hurtful and confusing, and I
+          understand that i contributed to us breaking up.
+        </li>
+      </ul>
+
+      <p class="intro">
+        I didn’t mean to hurt you, but I know that my intentions don’t erase the
+        hurt I caused. I should have handled this with honesty, maturity, and
+        respect.
+      </p>
+
+      <div class="note">
+        I want to do better not just say it. I need to take responsibility for
+        my choices, communicate clearly, and respect your boundaries. I
+        understand that rebuilding trust, would take
+        time, and you don’t owe me another chance but i am asking for one
+      </div>
+
+      <p class="intro">
+        I’m sorry for hurting you and for the way I handled everything
+      </p>
+
+      <p class="signature">I’m sorry.</p>
+
+      <div class="actions">
+        <button class="secondary" onclick="showPage(1)">
+          Back to the beginning
+        </button>
+      </div>
+
+      <div class="footer">Made with honesty, and without expecting anything in return. You are more than enough and i dont want you to ever doubt that, i want to become the man you deserve</div>
+    </section>
+  </main>
 
   <script>
-    const noBtn = document.getElementById("no");
+    function showPage(pageNumber) {
+      document.querySelectorAll(".page").forEach((page) => {
+        page.classList.remove("active");
+      });
 
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * 300;
-      const y = Math.random() * 100;
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    });
+      document.getElementById(`page-${pageNumber === 1 ? "one" : "two"}`)
+        .classList.add("active");
 
-    function goYes() {
-      window.location.href = "yes.html";
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   </script>
-
 </body>
 </html>
